@@ -16,7 +16,7 @@ public class Driver {
         /**
          Общая конфигурация драйвера
          */
-        Configuration.remote = "http://localhost:4444/wd/hub";
+        //Configuration.remote = "http://localhost:4444/wd/hub";
         Configuration.browser = Browsers.CHROME;
         Configuration.pageLoadStrategy = "eager";
         Configuration.browserSize = "1920x1080";
@@ -26,6 +26,7 @@ public class Driver {
         Configuration.pageLoadTimeout = 120000;
         Configuration.remoteConnectionTimeout = 60000;
         Configuration.remoteReadTimeout = 60000;
+        Configuration.headless = true;
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
