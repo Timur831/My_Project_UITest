@@ -27,6 +27,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+    - name: give chmod +x to chromedriver
+      run: chmod +x ~/chromedriver/linux/chromedriver
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
