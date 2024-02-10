@@ -60,7 +60,15 @@ public class Driver {
 
         Configuration.browserCapabilities = capabilities;
 
-        System.setProperty("webdriver.chrome.driver", "chromedriver/win/chromedriver.exe");
+        switch (TestParams.os)
+        {
+            case "win":
+                System.setProperty("webdriver.chrome.driver", "chromedriver/win/chromedriver.exe");
+                break;
+            case "linux":
+                System.setProperty("webdriver.chrome.driver", "chromedriver/linux/chromedriver");
+                break;
+        }
 
     }
 }
