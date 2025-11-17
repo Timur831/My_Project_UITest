@@ -17,16 +17,15 @@ public class Driver {
          Общая конфигурация драйвера
          */
         //Configuration.remote = "http://localhost:4444/wd/hub";
-        Configuration.browser = Browsers.CHROME;
         Configuration.pageLoadStrategy = "eager";
         Configuration.browserSize = "1920x1080";
-        Configuration.holdBrowserOpen = true;
+        Configuration.holdBrowserOpen = false;
         Configuration.screenshots = true;
         Configuration.timeout = 10000;
         Configuration.pageLoadTimeout = 120000;
         Configuration.remoteConnectionTimeout = 60000;
         Configuration.remoteReadTimeout = 60000;
-        Configuration.headless = true;
+        Configuration.headless = false;
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -54,21 +53,11 @@ public class Driver {
         selenoidOptions.put("enableVNC", true);
         selenoidOptions.put("enableVideo", false);
         selenoidOptions.put("enableLog", true);
-        selenoidOptions.put("browserVersion", "118.0");
+        //selenoidOptions.put("browserVersion", "118.0");
         //selenoidOptions.put("sessionTimeout", "1m");
         capabilities.setCapability("selenoid:options", selenoidOptions);
 
         Configuration.browserCapabilities = capabilities;
-
-        switch (TestParams.os)
-        {
-            case "win":
-                System.setProperty("webdriver.chrome.driver", "chromedriver/win/chromedriver.exe");
-                break;
-            case "linux":
-                System.setProperty("webdriver.chrome.driver", "chromedriver/linux/chromedriver");
-                break;
-        }
 
     }
 }
